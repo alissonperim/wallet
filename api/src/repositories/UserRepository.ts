@@ -1,21 +1,13 @@
 import { DeepPartial, Repository } from 'typeorm'
-import { IBaseRepository } from './interfaces/Base'
-import { AppDataSource } from '../data'
+import { IBaseRepository, IUserRepository } from './interfaces/Base'
+import { dataSource } from '../data'
 import { User } from '../entities/User'
 import { Wallet } from '../entities/Wallet'
 
-export interface IUser {
-    name: string
-    email: string
-    password: string
-    walletId: string
-}
+export class UserRepository implements IUserRepository {
+    constructor(private readonly context = dataSource.getRepository<User>(User)){}
 
-export class BaseRepository<T> implements IBaseRepository<T> {
-    constructor(
-        private readonly context: Repository<T> = AppDataSource.getRepository(T)
-    ) {}
-    async create(params: Partial<T>): Promise<T> {
-        return this.context.save(this.context.create({...params}))
+    create (params: Partial<User>): Promise<User> {
+        throw new Error('Method not implemented.')
     }
 }

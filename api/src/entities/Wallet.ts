@@ -1,17 +1,20 @@
-import { Column, Entity, OneToMany } from 'typeorm'
+import { Column, Entity, OneToMany, OneToOne } from 'typeorm'
 import { Base } from './Base'
 import { Card } from './Card'
+import { User } from './User'
 
 @Entity()
 export class Wallet extends Base {
     @Column(
         {
-            type: 'double'
+            type: 'decimal'
         }
     )
     amount!: number
+
+    @OneToOne(() => User, (user) => user.wallet)
+    user!: User
     
-    @Column()
     @OneToMany(
         () => Card,
         (card) => card.wallet,

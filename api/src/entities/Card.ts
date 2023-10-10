@@ -3,8 +3,9 @@ import { Base } from './Base'
 import { Wallet } from './Wallet'
 
 enum CardTypes {
-    CREDIT_CARD = 'CREDIT_CARD',
-    DEBT_CARD = 'DEBT_CARD'
+    CREDIT_CARD = 'credit_card',
+    DEBT_CARD = 'debit_card',
+    ALIMENTATION_CARD = 'alimentation_card',
 }
 
 @Entity()
@@ -44,4 +45,5 @@ export class Card extends Base {
         },
     )
     wallet!: Wallet
+
 }

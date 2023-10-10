@@ -5,12 +5,12 @@ import { Base } from './Base'
 @Entity()
 export class Category extends Base {
     @Column()
-    types!: string
+    name!: string
 
     @Column(
         {
             name: 'estimated_expense_per_month',
-            type: 'double'
+            type: 'decimal'
         }
     )
     estimatedExpensePerMonth!: number

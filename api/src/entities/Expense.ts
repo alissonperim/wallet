@@ -18,7 +18,6 @@ enum InstallmentStatus {
 
 @Entity()
 export class Expense extends Base {
-    @Column()
     @ManyToOne(
         () => Category,
         (category) => category.id
@@ -30,7 +29,7 @@ export class Expense extends Base {
 
     @Column(
         {
-            type: 'double'
+            type: 'decimal'
         }
     )
     amount!: number

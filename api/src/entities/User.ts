@@ -1,7 +1,8 @@
-import { Column, JoinColumn, OneToOne } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm'
 import { Base } from './Base'
 import { Wallet } from './Wallet'
 
+@Entity()
 export class User extends Base {
     @Column(
         {
@@ -25,19 +26,8 @@ export class User extends Base {
     )
     password!: string
 
-    @Column(
-        {
-            name: 'wallet_id',
-        }
-    )
-    walletId!: string
 
-    @OneToOne(() => Wallet)
-    @JoinColumn(
-        {
-            name: 'wallet_id',
-            referencedColumnName: 'id',
-        }
-    )
+    @OneToOne(() => Wallet, (wallet) => wallet.user,{eager: true, cascade: true})
+    @JoinColumn()
     wallet!: Wallet
 }
