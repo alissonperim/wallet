@@ -1,13 +1,12 @@
+import 'reflect-metadata'
+import './src/container'
 import  express from 'express'
+import { routes } from './src/routes'
 
 const app = express()
 app.use(express.json())
+app.use(routes)
 
-app.post('/api', (req, res) => {
-  console.log(req.body)
-  res.send('Hello World!')
-})
-
-app.listen(3000, () => {
+app.listen(3333, () => {
   console.log('Server running on port 3000')
 })
