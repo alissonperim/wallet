@@ -1,4 +1,4 @@
-import { IUserRepository } from './interfaces/Base'
+import { IUserRepository } from '../repositories/interfaces/UserRepository'
 import { dataSource } from '../data'
 import { User } from '../entities/User'
 import { nanoIdGenerator } from '../helpers/generateNanoId'
