@@ -21,4 +21,7 @@ export const dataSource = new DataSource({
         Installments,
         Expense
     ],
+    migrations: [
+        'src/data/migrations/*.ts'
+    ]
 })
