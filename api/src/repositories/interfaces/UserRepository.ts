@@ -1,4 +1,5 @@
-import { User } from '../../entities/User'
-import { IBaseRepository } from './Base'
+import { CreateUserDTO, ICreateUserParams } from '../../entities/dto/users/interfaces'
 
-export interface IUserRepository extends IBaseRepository<User> {}
+export interface IUserRepository {
+    create(params: ICreateUserParams): Promise<CreateUserDTO>
+}

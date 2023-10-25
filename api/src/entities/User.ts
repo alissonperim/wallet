@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm'
+import { Column, Entity, Index, JoinColumn, OneToOne } from 'typeorm'
 import { Base } from './Base'
 import { Wallet } from './Wallet'
 
@@ -11,9 +11,11 @@ export class User extends Base {
     )
     name!: string
 
+    @Index()
     @Column(
         {
-            type: 'varchar'
+            type: 'varchar',
+            unique: true,
         }
     )
     email!: string

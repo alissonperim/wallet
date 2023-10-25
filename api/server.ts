@@ -1,5 +1,4 @@
 import 'reflect-metadata'
-import './src/container'
 import  express from 'express'
 import { routes } from './src/routes'
 

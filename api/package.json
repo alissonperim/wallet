@@ -9,7 +9,9 @@
     "comment": "Ao startar migration:generate deve ser adicionado o path de onde será salvo a migration ex: ./src/data/migrations/NomeDaMigration",
     "typeorm": "typeorm-ts-node-esm -d ./src/data/index.ts",
     "migration:generate": "npm run typeorm -- migration:generate",
-    "migration:run": "npm run typeorm migration:run"
+    "migration:run": "npm run typeorm migration:run",
+    "migration:revert": "npm run typeorm migration:revert"
+
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm'
+import { CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity()
 export class Base {
@@ -20,20 +20,4 @@ export class Base {
         }
     )
     updatedAt!: Date
-
-    @Column(
-        {
-            name: 'created_by',
-            type: 'varchar'
-        }
-    )
-    createdBy!: string
-
-    @Column(
-        {
-            name: 'updated_by',
-            type: 'varchar'
-        }
-    )
-    updatedBy!: string
 }

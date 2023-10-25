@@ -1,6 +1,6 @@
+import { inject, injectable } from 'tsyringe'
 import { CreateUserDTO, ICreateUserParams } from '../../entities/dto/users/interfaces'
 import { IUserRepository } from '../../repositories/interfaces/UserRepository'
-import { inject, injectable } from 'tsyringe'
 import { ICreateUserService } from '../interfaces/UsersServicesInterface'
 import { passwordHash } from '../../utils/passwordHash'
 
@@ -8,13 +8,13 @@ import { passwordHash } from '../../utils/passwordHash'
 export class CreateUserService implements ICreateUserService {
     constructor(
         @inject('UsersRepository')
-        private readonly usersRepository: IUserRepository
+        private readonly repository: IUserRepository
     ) {}
 
     async execute(params: ICreateUserParams): Promise<CreateUserDTO> {
         const { password } = params
         const pwHash = await passwordHash(password)
 
-        return await this.usersRepository.create({...params, password: pwHash})
+        return await this.repository.create({...params, password: pwHash})
     }
 }
