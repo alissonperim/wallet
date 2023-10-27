@@ -1,5 +1,5 @@
-import { CreateUserDTO, ICreateUserParams } from '../../entities/dto/users/interfaces'
+import { CreateUserResponseDTO, ICreateUserParams } from '../../entities/dto/users/interfaces'
 
 export interface IUserRepository {
-    create(params: ICreateUserParams): Promise<CreateUserDTO>
+    create(params: ICreateUserParams): Promise<CreateUserResponseDTO>
 }

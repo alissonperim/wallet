@@ -8,4 +8,4 @@ export interface ICreateUserParams {
     wallet: Wallet
 }
 
-export type CreateUserDTO = Partial<ICreateUserParams>
+export type CreateUserResponseDTO = Partial<ICreateUserParams>

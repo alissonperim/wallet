@@ -17,6 +17,10 @@ export class AppDataSourceSingleton {
         return this.instance
     }
 
+    public static getRepository<T>(T: any) {
+        return this.getInstance().dataSource.getRepository<T>(T)
+    }
+
     async dbInstance(): Promise<DataSource> {
         this.dataSource = AppDataSource()
         if (!this.dataSource.isInitialized) {

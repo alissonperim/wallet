@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe'
-import { CreateUserDTO, ICreateUserParams } from '../../entities/dto/users/interfaces'
+import { CreateUserResponseDTO, ICreateUserParams } from '../../entities/dto/users/interfaces'
 import { IUserRepository } from '../../repositories/interfaces/UserRepository'
 import { ICreateUserService } from '../interfaces/UsersServicesInterface'
 import { passwordHash } from '../../utils/passwordHash'
@@ -11,7 +11,7 @@ export class CreateUserService implements ICreateUserService {
         private readonly repository: IUserRepository
     ) {}
 
-    async execute(params: ICreateUserParams): Promise<CreateUserDTO> {
+    async execute(params: ICreateUserParams): Promise<CreateUserResponseDTO> {
         const { password } = params
         const pwHash = await passwordHash(password)
 

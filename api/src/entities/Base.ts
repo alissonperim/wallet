@@ -1,4 +1,5 @@
 import { CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm'
+import { nanoIdGenerator } from '../helpers/generateNanoId'
 
 @Entity()
 export class Base {
@@ -20,4 +21,11 @@ export class Base {
         }
     )
     updatedAt!: Date
+
+    constructor() {
+        if (!this.id) {
+            this.id = nanoIdGenerator()
+        }
+        
+    }
 }

@@ -1,19 +1,19 @@
 import { IUserRepository } from './interfaces/UserRepository'
 import { User } from '../entities/User'
-import { nanoIdGenerator } from '../helpers/generateNanoId'
-import { AppDataSourceSingleton } from '../data/connectionSingleton'
 import { Repository } from 'typeorm'
+import { CreateUserResponseDTO, ICreateUserParams } from '../entities/dto/users/interfaces'
+import { createUserResponseDTO } from '../entities/dto/users/create'
+import { inject, injectable } from 'tsyringe'
 
+@injectable()
 export class UserRepository implements IUserRepository {
-    private readonly context: Repository<User> = 
-        AppDataSourceSingleton.getInstance().dataSource.getRepository<User>(User)
-    constructor(){}
+    constructor(
+        @inject('Repository')
+        private readonly context: Repository<User>
+    ){}
 
-    async create (params: Partial<User>): Promise<User> {
-        console.log('ENTROU AQUI?!')
-        const id = nanoIdGenerator()
-        const user = this.context.create({ id, ...params })
-        console.log('USER: ', user)
-        return this.context.save(user)
+    async create (params: ICreateUserParams): Promise<CreateUserResponseDTO> {
+        const user = await this.context.save(this.context.create({ ...params }))
+        return createUserResponseDTO(user)
     }
 }
